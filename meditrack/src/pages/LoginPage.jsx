@@ -12,11 +12,13 @@ export default function LoginPage() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
 
 
     const handleLoginSubmit = (event) => {
         event.preventDefault();
         setError("");
+        setSuccess("");
 
         if (!username.trim() || !password) {
             setError("Please enter both username and password.");
@@ -35,7 +37,7 @@ export default function LoginPage() {
 
         // TODO: store the user in context / global auth state
         console.log("Logged in as:", user);
-
+        setSuccess(`Logged in as ${user.username} (${user.role}).`);
 
         // Future: redirect based on role
         // e.g., navigate("/doctors");
@@ -72,6 +74,7 @@ export default function LoginPage() {
 
 
                 {error && <p className="error-text">{error}</p>}
+                {success && <p className="success-text">{success}</p>}
 
 
                 <button type="submit">Sign In</button>

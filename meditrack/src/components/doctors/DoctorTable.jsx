@@ -15,7 +15,7 @@ export default function DoctorTable({ doctors, onSelectDoctor }) {
             className="doctor-table-row"
             onClick={() => onSelectDoctor(doctor.id)}
           >
-            <td>{doctor.fullName}</td>
+            <td>{doctor.displayName}</td>
             <td>{doctor.role}</td>
             <td>{doctor.specialty}</td>
           </tr>

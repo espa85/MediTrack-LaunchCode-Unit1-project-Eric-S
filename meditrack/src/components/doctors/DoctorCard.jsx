@@ -8,12 +8,12 @@ export default function DoctorCard({ doctor, onClick }) {
       <div className="doctor-card-image-wrapper">
         <img
           src={imageSrc}
-          alt={doctor.fullName}
+          alt={doctor.displayName}
           className="doctor-card-image"
         />
       </div>
       <div className="doctor-card-body">
-        <h3>{doctor.fullName}</h3>
+        <h3>{doctor.displayName}</h3>
         <p>{doctor.role}</p>
         <p>{doctor.specialty}</p>
       </div>

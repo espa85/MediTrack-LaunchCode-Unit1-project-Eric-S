@@ -8,7 +8,7 @@ export default function DoctorProfilePanel({ doctor, onBack }) {
         <button type="button" onClick={onBack}>
           ← Back to Doctors
         </button>
-        <h2>{doctor.fullName}</h2>
+        <h2>{doctor.displayName}</h2>
       </header>
 
       <div className="doctor-profile-content">

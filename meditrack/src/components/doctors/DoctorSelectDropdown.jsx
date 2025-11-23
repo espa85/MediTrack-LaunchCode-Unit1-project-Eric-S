@@ -10,7 +10,7 @@ export default function DoctorSelectDropdown({ doctors, value, onChange }) {
         <option value="all">All Doctors</option>
         {doctors.map((doc) => (
           <option key={doc.id} value={doc.id}>
-            {doc.fullName}
+            {doc.displayName}
           </option>
         ))}
       </select>

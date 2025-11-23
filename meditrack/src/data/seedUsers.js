@@ -10,7 +10,7 @@ export const users = [
   // Doctor users
   ...doctors.map((doc) => ({
     id: `user-${doc.id}`,
-    username: doc.id, // or doc.email or another identifier
+    username: doc.email, // or doc.email or another identifier
     password: "mockpw",
     role: "doctor",
     doctorId: doc.id,

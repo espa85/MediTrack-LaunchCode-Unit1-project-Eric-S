@@ -20,7 +20,7 @@ export default function App() {
         <main className="app-main">
           <Routes>
             <Route path ="/" element={<HomePage />} />
-            <Route path ="/doctors" element={<DoctorPage />} />
+            <Route path ="/doctors" element={<DoctorsPage />} />
             <Route path ="/expired" element={<ExpiredPage />} />
             <Route path ="/about" element={<AboutPage />} />
             <Route path ="/settigns" element={<SettingsPate />} />

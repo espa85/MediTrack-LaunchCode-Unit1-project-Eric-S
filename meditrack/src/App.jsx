@@ -23,7 +23,7 @@ export default function App() {
             <Route path ="/doctors" element={<DoctorsPage />} />
             <Route path ="/expired" element={<ExpiredPage />} />
             <Route path ="/about" element={<AboutPage />} />
-            <Route path ="/settigns" element={<SettingsPate />} />
+            <Route path ="/settigns" element={<SettingsPage />} />
             <Route path ="/login" element={<LoginPage />} />
           </Routes>
         </main>

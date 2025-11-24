@@ -1,57 +1,70 @@
 /* App shell */
 .app-shell {
-min-height: 100vh;
-display: flex;
-flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #020617;
+  color: #e5e7eb;
 }
 
 
 .app-main {
-flex: 1;
-padding: 1rem;
+  flex: 1;
+  padding: 1rem;
 }
 
 
 /* Title banner */
 .title-banner {
-background: linear-gradient(90deg, #2f3c7e, #4f6ddf);
-color: #ffffff;
-padding: 0.75rem 1.5rem;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  background: #0f172a;
+  color: #f9fafb;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.6);
 }
 
 
 .title-banner h1 {
-font-size: 1.4rem;
-font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 
 /* Navigation bar */
 .nav-bar {
-background-color: #ffffff;
-border-bottom: 1px solid #e0e4f0;
+  background: #111827;
+  color: #e5e7eb;
+  padding: 0.5rem 1.5rem;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.8);
 }
 
 
 .nav-bar ul {
-display: flex;
-gap: 1rem;
-padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
 }
 
 
 .nav-bar li {
-display: flex;
+  list-style: none;
 }
 
 
-.nav-bar a {
-padding: 0.25rem 0.5rem;
-border-radius: 999px;
-font-size: 0.95rem;
+.nav-bar a,
+.nav-bar .nav-button {
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: inherit;
+  border: none;
+  background: none;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
 }
 
+.nav-bar a:hover,
+.nav-bar .nav-button:hover {
+  color: #f9fafb;
+}
 
 .nav-bar a.active {
 background-color: #e1e7ff;
@@ -77,6 +90,21 @@ margin-bottom: 1rem;
 color: #1b1f33;
 }
 
+/* Profile bar (we’ll add this component next) */
+.profile-bar {
+  background: #1f2937;
+  color: #e5e7eb;
+  padding: 0.35rem 1.5rem;
+  font-size: 0.9rem;
+}
+
+.profile-bar-text {
+  margin: 0;
+}
+
+.profile-bar-name {
+  font-weight: 600;
+}
 
 /* Doctors filter bar */
 .doctors-filter-bar {

@@ -1,8 +1,14 @@
-* {
-box-sizing: border-box;
-margin: 0;
-padding: 0;
+/* Import app-specific styles */
+@import "./App.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
 
 
 html,
@@ -40,7 +46,3 @@ cursor: pointer;
 ul {
 list-style: none;
 }
-
-
-/* Import app-specific styles */
-@import "./App.css";

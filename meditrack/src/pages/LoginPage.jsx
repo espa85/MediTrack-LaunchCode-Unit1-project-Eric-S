@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { authenticate } from "../auth/auth";
 import PageContainer from "../components/layout/PageContainer";
 
@@ -8,10 +9,11 @@ import PageContainer from "../components/layout/PageContainer";
 //   Doctor: username = doctor email (e.g. "priya.desai@sgmc.org"), password = "mockpw"
 
 
-export default function LoginPage() {
+export default function LoginPage({ onLogin }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const navigate = useNavigate();
 
 
     const handleLoginSubmit = (event) => {
@@ -34,38 +36,39 @@ export default function LoginPage() {
 
 
         // TODO: store the user in context / global auth state
-        console.log("Logged in as:", user);
+        if (onLogin) {
+            onLogin(user);
+        }
 
-
-        // Future: redirect based on role
-        // e.g., navigate("/doctors");
+        // redirect
+        navigate("/doctors");
     };
 
 
     return (
-        <PageContainer title="Login">
+        <PageContainer title="Sign In">
             <form className="login-form" onSubmit={handleLoginSubmit}>
-                <div>
+                <div className="form-field">
                     <label>
                         Username
                         <input
-                        type="text"
-                        value={username}
-                        autoComplete="username"
-                        onChange={(e) => setUsername(e.target.value)}
+                            type="text"
+                            value={username}
+                            autoComplete="username"
+                            onChange={(e) => setUsername(e.target.value)}
                         />
                     </label>
                 </div>
 
 
-                <div>
+                <div className="form-field">
                     <label>
                         Password
                         <input
-                        type="password"
-                        value={password}
-                        autoComplete="current-password"
-                        onChange={(e) => setPassword(e.target.value)}
+                            type="password"
+                            value={password}
+                            autoComplete="current-password"
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                     </label>
                 </div>

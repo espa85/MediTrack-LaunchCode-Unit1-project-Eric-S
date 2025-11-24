@@ -50,7 +50,6 @@ export default function App() {
             <Route path ="/expired" element={<ExpiredPage />} />
             <Route path ="/about" element={<AboutPage />} />
             <Route path ="/settings" element={<SettingsPage />} />
-            <Route path ="/login" element={<LoginPage />} />
             <Route 
               path="/login"
               element={<LoginPage onLogin={handleLogin} />}

@@ -1,6 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
-export default function NavBar() {
+export default function NavBar( { currentUser, onLogout }) {
+    const navigate = useNavigate();
+
+    function handleLogoutClick() {
+        if (onLogout) {
+            onLogout();
+        }
+        navigate("/login");
+    }
+
+
     return (
         <nav className="nav-bar">
             <ul>
@@ -20,7 +30,15 @@ export default function NavBar() {
                     <NavLink to="/settings" end>Settings</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/login" end>Login</NavLink>
+                    {currentUser ? (
+                        <button
+                            type="button"
+                            className="nav-button"
+                            onClick={handleLogoutClick}
+                        >Logout</button>
+                    ) : (
+                        <NavLink to="/login" end>Login</NavLink>
+                    )}
                 </li>
             </ul>
         </nav>

@@ -1,88 +1,77 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../auth/AuthContext";
 
-// NavBar with hamburger menu + Login/Logout toggle
-export default function NavBar({ currentUser, onLogout }) {
-  const [menuOpen, setMenuOpen] = useState(false);
+export default function NavBar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
 
-  function toggleMenu() {
-    setMenuOpen((prev) => !prev);
-  }
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
 
-  function closeMenu() {
-    setMenuOpen(false);
-  }
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
-  function handleLogoutClick() {
-    if (onLogout) {
-      onLogout();
-    }
-    setMenuOpen(false);
+  const handleLogoutClick = () => {
+    logout();
+    closeMenu();
     navigate("/login");
-  }
+  };
 
   return (
-    <nav className="nav-bar">
-      <div className="nav-bar-row">
-        {/* Hamburger button - visible on small screens via CSS */}
+    <nav className="navbar">
+      <div className="navbar-inner">
+        <div className="navbar-logo">MediTrack</div>
+
         <button
+          className="navbar-hamburger"
           type="button"
-          className={`nav-toggle ${menuOpen ? "nav-toggle-open" : ""}`}
-          aria-label="Toggle navigation menu"
-          aria-expanded={menuOpen}
           onClick={toggleMenu}
+          aria-label="Toggle navigation menu"
         >
-          <span />
-          <span />
-          <span />
+          <span className="hamburger-line" />
+          <span className="hamburger-line" />
+          <span className="hamburger-line" />
         </button>
 
-        {/* Main nav links */}
-        <ul className={`nav-links ${menuOpen ? "nav-links-open" : ""}`}>
-          <li>
-            <NavLink to="/" end onClick={closeMenu}>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/doctors" end onClick={closeMenu}>
-              Doctors
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/expired" end onClick={closeMenu}>
-              Expired
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/about" end onClick={closeMenu}>
-              About
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/settings" end onClick={closeMenu}>
-              Settings
-            </NavLink>
-          </li>
+        <div className={`navbar-links ${isMenuOpen ? "open" : ""}`}>
+          <NavLink to="/" onClick={closeMenu} className="navbar-link">
+            Home
+          </NavLink>
+          <NavLink to="/doctors" onClick={closeMenu} className="navbar-link">
+            Doctors
+          </NavLink>
+          <NavLink to="/expired" onClick={closeMenu} className="navbar-link">
+            Expired
+          </NavLink>
+          <NavLink to="/about" onClick={closeMenu} className="navbar-link">
+            About
+          </NavLink>
+          <NavLink to="/settings" onClick={closeMenu} className="navbar-link">
+            Settings
+          </NavLink>
 
-          {/* Login / Logout slot */}
-          <li>
-            {currentUser ? (
-              <button
-                type="button"
-                className="nav-button"
-                onClick={handleLogoutClick}
-              >
-                Logout
-              </button>
-            ) : (
-              <NavLink to="/login" end onClick={closeMenu}>
-                Login
-              </NavLink>
-            )}
-          </li>
-        </ul>
+          {!isAuthenticated ? (
+            <NavLink
+              to="/login"
+              onClick={closeMenu}
+              className="navbar-link"
+            >
+              Login
+            </NavLink>
+          ) : (
+            <button
+              type="button"
+              className="navbar-link navbar-link-button"
+              onClick={handleLogoutClick}
+            >
+              Logout
+            </button>
+          )}
+        </div>
       </div>
     </nav>
   );
